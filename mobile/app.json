@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "Hermes Voice",
+    "slug": "hermes-voice",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hermesvoice.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Микрофон нужен, чтобы разговаривать с агентом Hermes голосом."
+      }
+    },
+    "android": {
+      "package": "com.hermesvoice.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0F1115",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "RECORD_AUDIO",
+        "INTERNET",
+        "MODIFY_AUDIO_SETTINGS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Микрофон нужен, чтобы разговаривать с агентом Hermes голосом."
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+# --- секреты ---
+# В config.json лежит ключ API-сервера Hermes. Шаблон без ключа — config.example.json.
+config.json
+.env
+.env.*
+!.env.example
+
+# --- окружение Python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- модели синтеза речи ---
+# ~60 МБ на голос, качаются автоматически из run.bat
+voices/
+*.onnx
+*.onnx.json
+
+# --- артефакты сборки ---
+dist/
+build/
+*.zip
+
+# --- мобильный клиент ---
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/dist-check/
+mobile/web-build/
+mobile/expo-env.d.ts
+mobile/*.tsbuildinfo
+
+# Собранные нативные проекты: генерируются из app.json командой expo prebuild
+mobile/android/
+mobile/ios/
+
+# --- прочее ---
+.DS_Store
+Thumbs.db
+*.log
