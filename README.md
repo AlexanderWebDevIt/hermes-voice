@@ -129,6 +129,42 @@ run.bat
 curl http://localhost:8643/health
 ```
 
+### Перенос на другую машину
+
+В репозитории намеренно нет двух вещей:
+
+| Чего нет | Почему | Что делать на новой машине |
+|---|---|---|
+| `config.json` | в нём ключ API-сервера Hermes | скопировать `config.example.json` в `config.json` и вписать ключ |
+| `voices/` | ~240 МБ, четыре модели ONNX | `run.bat` скачает сам при первом запуске |
+
+Порядок:
+
+```bat
+git clone https://github.com/AlexanderWebDevIt/hermes-voice.git
+cd hermes-voice
+copy config.example.json config.json
+rem открыть config.json и вписать hermes_api_key
+run.bat
+```
+
+Ключ `hermes_api_key` — это `API_SERVER_KEY` из `.env` Hermes
+(`%LOCALAPPDATA%\hermes\.env` на Windows). Ключи провайдеров моделей
+(`KODIKROUTER_API_KEY`, `DEEPSEEK_API_KEY`) дублировать не нужно: бэкенд `direct`
+читает их прямо из `.env` Hermes.
+
+Отдельно на новой машине нужен сам **Hermes Agent** — этот репозиторий только
+голосовой слой. Шлюз на `127.0.0.1:8642` ставится самостоятельно; без него
+работает лишь бэкенд `direct`, а режим «Агент» отвечать не будет.
+
+Клиент ставится отдельно:
+
+```bat
+cd mobile
+npm install
+dev-android.bat
+```
+
 ### Голоса
 
 Голоса Piper — это файлы `voices/<имя>.onnx` + `<имя>.onnx.json`.
